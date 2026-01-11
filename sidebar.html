@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobilpont Assistant</title>
+    <link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+    <div class="app-layout">
+        <div class="extension-header" id="ext-header">
+            </div>
+
+        <div class="webview-container">
+            <iframe src="https://mobilpontszeged.hu/assistant/" 
+                    id="mp-assistant-frame"
+                    frameborder="0" 
+                    allow="clipboard-write">
+            </iframe>
+        </div>
+
+        <div class="extension-footer" id="ext-footer">
+            </div>
+    </div>
+
+    <script src="sidebar.js"></script>
+</body>
+</html>

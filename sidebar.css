@@ -1,0 +1,76 @@
+/* ============================================================================
+   MOBILPONT SIDEBAR - IFRAME LAYOUT v1.0
+   ============================================================================ */
+:root {
+    --bg-app: #121212;
+    --border-color: #333;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { 
+    font-family: 'Inter', sans-serif; 
+    background: var(--bg-app); 
+    height: 100vh; 
+    overflow: hidden; /* A görgetést az iframe kezeli majd */
+}
+
+/* Fő Flexbox konténer */
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+/* FELSŐ ZÓNA */
+.extension-header {
+    flex-shrink: 0; /* Nem nyomódhat össze */
+    /* Ideiglenes stílus, amíg nincs benne tartalom, elrejtheted display:none-nal is */
+    background: #1E1E1E;
+    border-bottom: 1px solid var(--border-color);
+    min-height: 0px; /* Ha üres, ne foglaljon helyet, később átírható */
+}
+
+/* KÖZÉPSŐ ZÓNA - A Weboldal */
+.webview-container {
+    flex: 1; /* Ez a varázslat: kitölti a maradék helyet */
+    position: relative;
+    background: #000;
+}
+
+iframe#mp-assistant-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* ALSÓ ZÓNA */
+.extension-footer {
+    flex-shrink: 0;
+    background: #1E1E1E;
+    border-top: 1px solid var(--border-color);
+    min-height: 0px;
+}
+
+
+.sidebar-btn {
+    width: 90%;
+    margin: 10px auto;
+    display: block;
+    padding: 10px;
+    background: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.sidebar-btn:hover {
+    background: #155ab6;
+}

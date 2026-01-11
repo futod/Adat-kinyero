@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "Mobilpont Univerzális Asszisztens",
+  "version": "19.7",
+  "description": "OVIP Raktár + Webshop Szinkron + M360 + Trello Integráció + Intelligens Keresés SideBar + Címkenyomtatás OVIP gombbal",
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "sidePanel",
+    "storage",
+    "identity",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://mobilpontszeged.hu/*",
+    "https://www.ovip.hu/*",
+    "https://m360soft.com/*",
+    "https://api.trello.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": "icon.png"
+  },
+  "options_page": "settings.html",
+  "side_panel": {
+    "default_path": "sidebar.html"
+  },
+  "commands": {
+    "open-sidebar": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "Command+Shift+F"
+      },
+      "description": "Mobilpont Keresés megnyitása"
+    }
+  },
+  "icons": {
+    "48": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.ovip.hu/*", 
+        "https://mobilpontszeged.hu/termek/*",
+        "https://mobilpontszeged.hu/shop/*",
+        "https://mobilpontszeged.hu/wp-admin/post.php*"
+      ],
+      "js": ["lib/qrcode.min.js", "content.js", "trello.js"],
+      "css": ["style.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["lib/pdf.worker.min.js", "config.js", "logo.png", "lib/logo.png"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "oauth2": {
+    "client_id": "1084425782316-4k69o8cijbl48r6klcqthn33o6n3kga8.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/drive.readonly"
+    ]
+  }
+
+}
